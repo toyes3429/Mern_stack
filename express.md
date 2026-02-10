@@ -33,3 +33,76 @@ but in express we just have to pass one line
     res.send("<h1>This is the express series</h1>") this will do the work 
 internally the express handles the request as the html we dont have to justify it 
 ## Handling Routes...
+app.use([path,]callback[,callback...])
+ex:-> app.use('/' (req,res,next)=>{
+    res.send("<h1>This is the Home page</h1>")
+})
+
+one major thing :-> you cant call next after sending an response 
+cant call next() after the res.send();
+
+another major thing:-> '/' matches everything
+
+## removing the http server using the express 
+now we know express so we dont have to use the http method to create an server 
+we can directly use the express 
+just do
+ex:->app.listen(PORT,()=>{
+    //anything you want to pass
+}) 
+## some new Methods 
+till now we were just talking about the app.use() in this case we were just blindly sending the response 
+but now we can use the other methods in diffrent situations  like->
+1. app.get()  
+    when the user goes with the get method only then will send the response 
+2. app.post()
+    when the user goes with the post method only then will send the response
+
+# Parsing Request
+
+## Old School Method (Nowadays not used)
+const bodyparser=require('body-parser');
+
+remember the method we used to get the info from the chunks of an data from the user 
+
+## express router 
+just made diffrent files for diffrent use and implemented them in the major app file 
+just like django we just have to export the diffrent pages and most imp we have to 
+import them firstly
+
+## Adding 404
+whenever we get to an page where we havent routing yet we het the message Cannot GET /toyes
+like this 
+so to fix this we have to add the 404 code 
+
+app.use((req,res,next)=>{
+    res.status(404).send("Your_Response");
+})
+Remember to use that in the last beacuse if it is at the top 
+the first thing that will execute will be the 404 message 
+
+## Common PATHS 
+
+
+# Adding Html file
+we are just writing the html in the direct response which is not an good practice 
+for that we will be using seprate html files for the sesprate pages 
+
+## Serving an HTML file 
+now we have to attach those html files 
+using the core module of  path
+-> const path=require("path");
+
+then except the res.send()
+
+we will be using the 
+
+res.sendFile(path.join(__dirname,"../","views","addhome.html"));
+
+## using file helper 
+
+
+
+
+## Using the Tailwind CSS 
+
