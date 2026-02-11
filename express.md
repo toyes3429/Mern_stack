@@ -105,4 +105,32 @@ res.sendFile(path.join(__dirname,"../","views","addhome.html"));
 
 
 ## Using the Tailwind CSS 
+well we cnat directly make and css file and then use the res.sendFile() mehtod because we dont have the access to use the files 
+outside the folder due to privacyu so we have to make an new folder the tell the code to recognose that folder as an public 
+foder 
 
+app.use(express.static(path.join(rootDir, 'public')));
+
+thats the line of code that is helping us to use the home.css file anywhere in our html files 
+
+------I AM SKIPPING TAILWIND CSS FOR NOW -------------
+
+## Dynamic UI using EJS 
+Till now we are just sending the static data like send that html file and all that 
+but there may be cases where one have the dynamic data 
+like the data is changing every other second 
+ or the data depends on the person loging in 
+
+ex.-> the instagram feed of everyone is not same 
+the mails are not same 
+the stock market dont have an static data 
+
+
+
+## EJS->Embedded JavaScript
+
+1. JavaScript within HTML 
+2. Syntax-> <% %>  for control flow 
+            <%= %> for output 
+3. supports partial for reusing code snippets 
+4. allow full js expression in templates 
