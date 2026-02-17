@@ -14,4 +14,9 @@ hostRouter.get("/host/add-home",homescontroller.getAddHome)
 
 hostRouter.post("/host/add-home",homescontroller.postAddHome);
 
+
+hostRouter.get("/home-detail",homescontroller.home_detail);
+
+hostRouter.post('/home-detail',homescontroller.posthome_deatils);
+
 exports.hostRouter=hostRouter;

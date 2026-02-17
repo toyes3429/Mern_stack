@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-Detail</title>
+</head>
+<body>
+  <% if (typeof details !== 'undefined' && details.length) { %>
+    <h2>Submitted Details</h2>
+    <ul>
+    <% details.forEach(d => { %>
+      <li><strong><%= d.name %></strong> — <%= d.email %> — Rating: <%= d.rating %><br>Feedback: <%= d.feedback %></li>
+    <% }) %>
+    </ul>
+  <% } %>
+
+  <h2>Leave Feedback</h2>
+  <form action="/home-detail" method="POST">
+    <input type="text" name="name" placeholder="Your name"><br><br>
+
+    <input type="email" name="email" placeholder="Your email"><br><br>
+
+    <input type="text" name="rating" placeholder="Rating (1-5)"><br><br>
+
+    <textarea name="feedback" placeholder="Write your feedback here..."></textarea><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

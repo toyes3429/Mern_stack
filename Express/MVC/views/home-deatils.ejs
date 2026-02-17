@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home-details</title>
+</head>
+<body>
+   <ul>
+            <% home_details.forEach(home => {%>
+                <li>
+                    <%= home_details.name %>
+                    <%= home_details.email %>
+                    <%= home_details.rating %>
+                    <%= home_details.feedback %>
+                </li>
+            <% }) %>
+        </ul>
+</body>
+</html>
