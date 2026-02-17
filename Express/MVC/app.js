@@ -6,12 +6,14 @@ const path=require('path');
 const user_router=require("./routes/userRouter");
 const {hostRouter}=require("./routes/hostRouter");
 
+const homesController=require('./controllers/error');
+
 const rootDir = require('./utils/path');
 
 // creation of app 
 const app=express();
 
-//EJS
+// essential lines for EJS
 
 app.set('view engine','ejs');
 app.set('views','views');
@@ -29,10 +31,7 @@ app.use(user_router);
 
 app.use(hostRouter);
 
-app.use((req,res,next)=>{
-    // console.log(__dirname);   //used this to fix an bug related to the file path
-    res.status(404).sendFile(path.join(__dirname,"views","404.html"));
-})
+app.use(homesController.error404);
 
 
 //actual server and its PORT

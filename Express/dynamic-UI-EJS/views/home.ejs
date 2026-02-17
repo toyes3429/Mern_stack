@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="home.css"/>
+</head>
+<body>
+    <header>
+        
+        <h1>Welcome To Airbnb</h1>
+        
+    </header>
+
+    <main>
+
+        <ul>
+            <% homes.forEach(home => {%>
+                <li>
+                    <%= home.HouseName %>
+                </li>
+            <% }) %>
+        </ul>
+
+        <a href="/host/add-home">Add Home</a>
+    </main>
+</body>
+</html>

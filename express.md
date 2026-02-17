@@ -127,10 +127,105 @@ the stock market dont have an static data
 
 
 
-## EJS->Embedded JavaScript
+# EJS->Embedded JavaScript
 
 1. JavaScript within HTML 
 2. Syntax-> <% %>  for control flow 
             <%= %> for output 
 3. supports partial for reusing code snippets 
 4. allow full js expression in templates 
+
+## Installing EJS 
+
+npm install --save ejs 
+
+after the const app=express();
+
+app.set('view engine','ejs');
+app.set('views','views');
+
+
+--> set the file name from .html to .ejs to efficently use it 
+
+now we were usually sending the file using the res.sendFile() method 
+but now we have to render it 
+
+res.render('home',{homes:homes})
+render the home.ejs (.ejs will be already taken by the system) then wew send and key value pair for the homes that will be further used 
+
+studying the EJS Partials 
+Make an folder named Partials in the folder 
+
+why partials??
+    there can be a block of code in html that is used several time like the header or the CTS section to solve that we can use compnenets that are used in react but in this case we will be using the ejs partials 
+
+[clickhere](https://www.youtube.com/watch?v=WaObzvMEgd4&t=1461s)
+thsi is the video for partials better understanding 
+
+# Model View Controller (MVC)
+MVC (Model–View–Controller) is an architectural pattern, not a framework.
+It tells you how to structure your code so it doesn’t turn into a mess as the app grows
+
+## Sepration of Concerns 
+1. MVC stands for Model-View-Controller: A software architectural pattern for developing user interfaces.
+
+2. Model: Manages the data and business logic of the application.
+
+3. View: Handles the display and presentation of data to the user.
+
+4. Controller: Processes user input, interacts with the Model, and updates the View accordingly.
+
+5. Routes are a part of Controllers.
+
+6. Purpose: MVC separates concerns within an application, making it easier to manage ‘and scale.
+
+## Adding the First Controller 
+controller basicallyy means handling the route diffrently adn handling the logic of that route diffrently 
+
+make an folder names controllers
+
+we can just make models in the routes but it will welcome the chaos that you will no like 
+hence we use the controllers 
+
+we can just use that function elsewhere like for ex:->
+    res.get('route',()=>{
+        //function
+
+    })
+
+but when using controller we can escape the chaos 
+    const homesController=require(../controllers/homes);
+
+    //i assume in controllers there is an file named homes that have an exports.getAddHome 
+    //that is doing all the work there
+
+    res.get('route',homesController.getAddHome);
+
+thats was controller that are very imp not to take  litely 
+
+## Models 
+
+Think of it like they are going to handel the data part 
+like the data coming is in the right format or not like this 
+in our case the name of the is correct or not  
+
+visit models/homes.js file to understand the whole concept 
+
+we have the fake databse for now 
+but we can also write in file 
+usign the fs 
+but nodemon will think its the servers data so it will raise an problem 
+
+## Nodemon causing problem 
+
+create a file in the parent folder named nodemon.json
+
+then editin it by this 
+{
+    "watch":["."],          //watch the whole folder 
+    "ext":"js,json,ejs",    //extensions of file to watch
+    "ignore":["node_modules/","data/"],         // what files to ignore
+    "exec":"node app.js"                      // whats the executable file name
+}
+
+

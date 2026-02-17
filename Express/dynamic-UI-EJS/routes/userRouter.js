@@ -6,7 +6,8 @@ const {homes}=require('./hostRouter');
 
 user_router.get("/",(req,res,next)=>{
     console.log(homes);
-    res.sendFile(path.join(__dirname,"../","views","home.html"));
+    // res.sendFile(path.join(__dirname,"../","views","home.html"));
+    res.render('home',{homes: homes});
 
 })
 
