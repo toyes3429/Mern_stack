@@ -229,3 +229,36 @@ then editin it by this
 }
 
 
+## Writing the data in a file 
+
+
+# Dynamic Path & Model Deep Dive 
+
+## What are Dynamic path
+Dynamic paths are routes (URLs) where part of the path is variable, not fixed.
+They let you handle many similar URLs with one route instead of writing separate routes for each case.
+
+static Path->
+        /profile/toyes 
+        /profile/rahul
+Dynamic Path->
+        /profile/:username   
+
+the path will automatically take the :username as an variable id 
+
+        Smallest Working ex:->
+
+const express = require('express');
+const app = express();
+
+app.get('/user/:id', (req, res) => {
+  res.send(`User ID is ${req.params.id}`);
+});
+
+app.listen(3000);
+
+just go to the localhost:3000/user/42
+the output will be 
+User ID is 42
+
+
